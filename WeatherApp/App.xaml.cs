@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 
 namespace WeatherApp
 {
@@ -12,6 +13,10 @@ namespace WeatherApp
 
         protected override void OnStartup(StartupEventArgs e)
         {
+
+            string lang = WeatherApp.Properties.Settings.Default.lang;
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
+
             base.OnStartup(e);
 
             ApplicationView app = new ApplicationView();

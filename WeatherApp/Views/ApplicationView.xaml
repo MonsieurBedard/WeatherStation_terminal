@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:WeatherApp.Properties"
         xmlns:local="clr-namespace:WeatherApp"
         xmlns:views="clr-namespace:WeatherApp.Views"
         xmlns:models="clr-namespace:WeatherApp.ViewModels"
@@ -24,13 +25,13 @@
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="Weather Station" Command="{Binding ChangePageCommand}" CommandParameter="TemperatureViewModel"/>
-                <MenuItem Header="Preferences..." Command="{Binding ChangePageCommand}" CommandParameter="ConfigurationViewModel"/>
+            <MenuItem Header="{x:Static p:Resources.mi_file}">
+                <MenuItem Header="{x:Static p:Resources.wn_title}" Command="{Binding ChangePageCommand}" CommandParameter="TemperatureViewModel"/>
+                <MenuItem Header="{x:Static p:Resources.mi_preferences}" Command="{Binding ChangePageCommand}" CommandParameter="ConfigurationViewModel"/>
                 <Separator />
                 <!-- TODO 10 : Ajouter Importer et exporter -->
-                <MenuItem Header="Import" Command="{Binding ImportCommand}"/>
-                <MenuItem Header="Export" Command="{Binding ExportCommand}"/>
+                <MenuItem Header="{x:Static p:Resources.mi_import}" Command="{Binding ImportCommand}"/>
+                <MenuItem Header="{x:Static p:Resources.mi_export}" Command="{Binding ExportCommand}"/>
             </MenuItem>
         </Menu>
         <ContentControl Content="{Binding CurrentViewModel}"/>
