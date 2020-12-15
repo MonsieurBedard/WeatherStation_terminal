@@ -105,6 +105,19 @@ namespace WeatherApp.ViewModels
                 /// que celle que l'on vient de récupérer.
                 /// Utiliser la méthode Insert de la collection
 
+                if (Temperatures.Count != 0)
+                {
+                    TemperatureModel tmpTemperature = Temperatures[0];
+
+                    if (tmpTemperature.DateTime != CurrentTemp.DateTime && tmpTemperature.City != CurrentTemp.City)
+                    {
+                        Temperatures.Insert(0, CurrentTemp);
+                    }
+                } else
+                {
+                    Temperatures.Insert(0, CurrentTemp);
+                }
+
                 Debug.WriteLine(CurrentTemp);
             }
         }
