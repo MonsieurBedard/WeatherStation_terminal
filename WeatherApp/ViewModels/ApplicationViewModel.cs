@@ -3,8 +3,10 @@ using Ookii.Dialogs.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using WeatherApp.Commands;
 using WeatherApp.Models;
 using WeatherApp.Services;
@@ -72,6 +74,7 @@ namespace WeatherApp.ViewModels
         /// <summary>
         /// TODO 13a : Ajouter ChangeLanguageCommand
         /// </summary>
+        public DelegateCommand<string> ChangeLanguageCommand { get; set; }
 
 
         public List<BaseViewModel> ViewModels
@@ -96,6 +99,8 @@ namespace WeatherApp.ViewModels
             ImportCommand = new DelegateCommand<string>(Import);
 
             /// TODO 13b : Instancier ChangeLanguageCommand qui doit appeler la méthode ChangeLanguage
+            ChangeLanguageCommand = new DelegateCommand<string>(ChangeLanguage);
+
 
             initViewModels();          
 
@@ -280,6 +285,28 @@ namespace WeatherApp.ViewModels
             /// TODO 13c : Compléter la méthode pour permettre de changer la langue
             /// Ne pas oublier de demander à l'utilisateur de redémarrer l'application
             /// Aide : ApiConsumerDemo
+
+            Properties.Settings.Default.lang = language;
+            Properties.Settings.Default.Save();
+
+            MessageBoxResult result = MessageBox.Show($"{Properties.Resources.msg_restart}", "App", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Restart();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+
+        }
+
+        public void Restart()
+        {
+            var filename = System.Windows.Application.ResourceAssembly.Location;
+            var newFile = Path.ChangeExtension(filename, ".exe");
+            Process.Start(newFile);
+            System.Windows.Application.Current.Shutdown();
         }
 
         #endregion
