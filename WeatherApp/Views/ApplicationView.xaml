@@ -33,6 +33,10 @@
                 <MenuItem Header="{x:Static p:Resources.mi_import}" Command="{Binding ImportCommand}"/>
                 <MenuItem Header="{x:Static p:Resources.mi_export}" Command="{Binding ExportCommand}"/>
             </MenuItem>
+            <MenuItem Header="{x:Static p:Resources.mi_language}">
+                <MenuItem Header="Francais" Command="{Binding ChangeLanguageCommand}" CommandParameter="fr"/>
+                <MenuItem Header="English" Command="{Binding ChangeLanguageCommand}" CommandParameter="en"/>
+            </MenuItem>
         </Menu>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </DockPanel>
