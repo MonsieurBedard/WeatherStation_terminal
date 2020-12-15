@@ -117,7 +117,7 @@ namespace WeatherApp.ViewModels
                 {
                     Temperatures.Insert(0, CurrentTemp);
                 }
-
+                
                 Debug.WriteLine(CurrentTemp);
             }
         }

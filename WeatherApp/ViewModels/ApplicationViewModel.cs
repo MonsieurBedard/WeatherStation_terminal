@@ -157,12 +157,15 @@ namespace WeatherApp.ViewModels
         /// <returns></returns>
         private bool CanExport(string obj)
         {
-            if (tvm.Temperatures.Count != 0)
+            return true;
+
+            /*
+            if (tvm.Temperatures.Count > 0)
             {
                 return true;
             }
 
-            return false;
+            return false;*/
         }
 
         /// <summary>
@@ -190,9 +193,9 @@ namespace WeatherApp.ViewModels
             ///   Appeler la méthode saveToFile
             ///   
 
-            if (openFileDialog.ShowDialog() == true)
+            if (saveFileDialog.ShowDialog() == true)
             {
-                Filename = openFileDialog.FileName;
+                Filename = saveFileDialog.FileName;
                 saveToFile();
             }
         }

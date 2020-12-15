@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="apiKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2532a6ccec0f3d1f8a62a2f79ee29a04</Value>
     </Setting>
     <Setting Name="cities" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
